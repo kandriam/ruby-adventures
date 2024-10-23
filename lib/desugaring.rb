@@ -23,7 +23,8 @@ module DesugaringExercises
   # Copy the contents of the previous method here and remove this sugar.
   #
   def desugared_poetry(recipients, event, message)
-    implement_me!
+    # implement_me!
+    mail(message, to: recipients.map(&:email), subject: "You’re invited to #{event.title} on #{event.date}")
   end
 
   # Ruby allows you to pass arguments identified by name instead of just by position. They are really just
@@ -38,7 +39,9 @@ module DesugaringExercises
   # Copy the contents of the previous method here and remove this sugar.
   #
   def desugared_named_args(recipients, event, message)
-    implement_me!
+    # implement_me!
+    mail(message, {to: recipients.map(&:email), subject: "You’re invited to #{event.title} on #{event.date}"})
+
   end
 
   # Ruby’s general syntax for hashes is `{key => value, key => value, ...}`. Because it is so common to use
@@ -53,7 +56,9 @@ module DesugaringExercises
   # Copy the contents of the previous method here and remove this sugar.
   #
   def desugared_symbol_keys(recipients, event, message)
-    implement_me!
+    # implement_me!
+    mail(message, {:to => recipients.map(&:email), :subject => "You’re invited to #{event.title} on #{event.date}"})
+
   end
 
   # You may be wondering how `map(&:email)` works. When you precede the last argument of a method call with
@@ -72,7 +77,8 @@ module DesugaringExercises
   # Copy the contents of the previous method here and remove this sugar.
   #
   def desugared_attr_proc(recipients, event, message)
-    implement_me!
+    # implement_me!
+    mail(message, {:to => recipients.map{|x| x.email}, :subject => "You’re invited to #{event.title} on #{event.date}"})
   end
 
   # You may recall from the Ruby koans that when you put `#{something}` in a `"`-delimited string, Ruby will
